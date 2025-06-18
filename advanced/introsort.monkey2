@@ -3,15 +3,15 @@ Namespace sorts
 
 '---------------------------------------------------------- Introsort
 
+#rem monkeydoc Introsort
+@implementation iDkP for GaragePixel
+@since 2011-xx-xx (Aida 2)
+@inventor David Musser, 1997
+
+Hybrid sorting algorithm that uses QuickSort, HeapSort and InsertionSort
+Combines best features of these algorithms - O(n log n) in all cases
+#end
 Function IntroSort<T>(data:T[])
-	
-	' Introsort
-	' Implementation: iDkP for GaragePixel
-	' 2011-xx-xx (Aida 2)
-	' Inventor: David Musser, 1997
-	'
-	' Hybrid sorting algorithm that uses QuickSort, HeapSort and InsertionSort
-	' Combines best features of these algorithms - O(n log n) in all cases
 	
 	Local n:=data.Length
 	
