@@ -3,9 +3,9 @@ Namespace sorts
 
 '---------------------------------------------------------- HeapSort
 #rem monkeydoc HeapSort
-@Implementation: iDkP for GaragePixel
+@implementation: iDkP for GaragePixel
 @since 2011-xx-xx (Aida 2)
-@Inventor J. W. J. Williams, 1964
+@inventor J. W. J. Williams, 1964
 
 In-place comparison-based sorting algorithm
 O(n log n) time complexity with O(1) space
