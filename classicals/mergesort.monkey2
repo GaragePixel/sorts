@@ -2,6 +2,7 @@
 Namespace sorts
 
 '---------------------------------------------------------- MergeSort
+
 #rem monkeydoc MergeSort
 @implementation iDkP for GaragePixeli
 @since 2025-03-14 (Aida 4)
@@ -67,3 +68,4 @@ Function Merge<T>(data:T[], temp:T[], left:Int, mid:Int, right:Int)
 		k += 1
 	Wend
 End
+
