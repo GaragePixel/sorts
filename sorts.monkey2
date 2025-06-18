@@ -1,5 +1,5 @@
 
-Namespace stdlib.algorithms.sorts
+Namespace sorts
 
 '==============================================================
 ' Sorting Algorithms Library
