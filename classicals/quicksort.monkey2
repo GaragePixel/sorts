@@ -3,15 +3,17 @@ Namespace sorts
 
 '---------------------------------------------------------- QuickSort
 
+#rem monkeydoc QuickSort
+@implementation iDkP for GaragePixel
+@since 2011-xx-xx (Aida 2)
+@inventor Tony Hoare, 1959
+
+Efficient divide and conquer algorithm
+Average case O(n log n), worst case O(n²)
+#end
 Function QuickSort<T>(data:T[], low:Int, high:Int)
 
-	' QuickSort
-	' Implementation: iDkP for GaragePixel
-	' 2011-xx-xx (Aida 2)
-	' Inventor: Tony Hoare, 1959
-	'
-	' Efficient divide and conquer algorithm
-	' Average case O(n log n), worst case O(n²)
+
 
     If low < high
         Local pi:Int = QuickPartition<T>(data, low, high)
