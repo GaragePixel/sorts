@@ -1,41 +1,47 @@
 
 Namespace sorts
 
-'---------------------------------------------------------- BrickSort
-#rem monkeydoc Odd-Even Sort (Brick Sort)
-@implementation iDkP for GaragePixel
-@since 2025-03-14 (Aida 4)
-@inventor K. E. Batcher, 1968
+'---------------------------------------------------------- CubeSort
 
-A variation of bubble sort where we perform alternate passes on odd/even indices
-Stable sorting algorithm with O(n²) worst-case complexity
+#rem monkeydoc CubeSort
+@implementation: iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor Steven Swerling, 2006
+
+Parallel sorting algorithm with average case O(n log n)
+This is a simplified sequential implementation
 #end
-Function OddEvenSort<T>(data:T[])
-	
-	Local sorted:Bool = False
+Function CubeSort<T>(data:T[])
+
 	Local n:=data.Length
+	Local blockSize:Int = 8  ' This should be tuned for performance
+	Local done:Bool = False
 	
-	While Not sorted
-		sorted = True
+	While Not done
+		done = True
 		
-		' Perform bubble sort on even indexed elements
-		For Local i:Int = 0 Until n-1 Step 2
-			If data[i] > data[i+1]
+		' Process blocks
+		For Local i:Int = 0 Until n Step blockSize
+			Local atEnd:Int = Min(i + blockSize - 1, n - 1)
+			
+			' Sort each block
+			InsertionSortRange(data, i, atEnd)
+		End
+		
+		' Merge adjacent blocks
+		For Local i:Int = 0 Until n - 1
+			If i Mod blockSize = blockSize - 1
+				Continue
+			End
+			
+			If i < n - 1 And data[i] > data[i + 1]
 				Local temp:T = data[i]
-				data[i] = data[i+1]
-				data[i+1] = temp
-				sorted = False
+				data[i] = data[i + 1]
+				data[i + 1] = temp
+				done = False
 			End
 		End
 		
-		' Perform bubble sort on odd indexed elements
-		For Local i:Int = 1 Until n-1 Step 2
-			If data[i] > data[i+1]
-				Local temp:T = data[i]
-				data[i] = data[i+1]
-				data[i+1] = temp
-				sorted = False
-			End
-		Next
+		blockSize *= 2
 	Wend
 End
