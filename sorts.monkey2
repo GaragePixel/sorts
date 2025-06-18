@@ -95,6 +95,9 @@ Namespace sorts
 #Import "o2sorts/cubesort"
 #Import "o2sorts/gnomesort"				'A joke
 
+Function Main()
+End
+
 'coming soon:
 'timsort
 'stoogesort
