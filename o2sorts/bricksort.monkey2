@@ -2,16 +2,15 @@
 Namespace sorts
 
 '---------------------------------------------------------- BrickSort
+#rem monkeydoc Odd-Even Sort (Brick Sort)
+@implementation iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor K. E. Batcher, 1968
 
+A variation of bubble sort where we perform alternate passes on odd/even indices
+Stable sorting algorithm with O(n²) worst-case complexity
+#end
 Function OddEvenSort<T>(data:T[])
-	
-	' Odd-Even Sort (Brick Sort)
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: K. E. Batcher, 1968
-	'
-	' A variation of bubble sort where we perform alternate passes on odd/even indices
-	' Stable sorting algorithm with O(n²) worst-case complexity
 	
 	Local sorted:Bool = False
 	Local n:=data.Length
