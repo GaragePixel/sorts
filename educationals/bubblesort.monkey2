@@ -2,16 +2,17 @@
 Namespace sorts
 
 '---------------------------------------------------------- BubbleSort
+#rem monkeydoc BubbleSort
+@implementation iDkP for GaragePixel
+@since 2011-xx-xx (Aida 2)
+@inventor Unknown, documented as early as 1956
 
+Simple comparison-based sorting algorithm
+O(n²) worst and average case time complexity
+#end
 Function BubbleSort<T>(data:T[])
 	
-	' BubbleSort
-	' Implementation: iDkP for GaragePixel
-	' 2011-xx-xx (Aida 2)
-	' Inventor: Unknown, documented as early as 1956
-	'
-	' Simple comparison-based sorting algorithm
-	' O(n²) worst and average case time complexity
+
 	
     Local n:=data.Length
     For Local i:Int = 0 Until n
