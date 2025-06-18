@@ -12,8 +12,6 @@ Stable sorting algorithm that works well for linked lists
 #end
 Function MergeSort<T>(data:T[])
 	
-
-	
 	If data.Length <= 1 Then Return
 	
 	Local temp:T[] = New T[data.Length]
