@@ -3,16 +3,16 @@ Namespace sorts
 
 '---------------------------------------------------------- InPlaceMergeSort
 
+#rem monkeydoc In-Place Merge Sort
+@implementation: iDkP for GaragePixel
+@since 2011-xx-xx (Aida 2)
+@inventor Based on Merge Sort, in-place variant
+
+Merge sort implementation that doesn't require extra array allocation
+O(n log n) time complexity, but with O(1) extra space
+#end
 Function InPlaceMergeSort<T>(data:T[])
 
-	' In-Place Merge Sort
-	' Implementation: iDkP for GaragePixel
-	' 2011-xx-xx (Aida 2)
-	' Inventor: Based on Merge Sort, in-place variant
-	'
-	' Merge sort implementation that doesn't require extra array allocation
-	' O(n log n) time complexity, but with O(1) extra space
-	
 	InPlaceMergeSortRecursive(data, 0, data.Length - 1)
 End
 
