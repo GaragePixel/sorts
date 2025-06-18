@@ -3,6 +3,6 @@
 	"about":"Sort Mini-Library for Monkey2",
 	"author":"iDkP from GaragePixel",
 	"version":"1.0.0",
-	"support":"	https://github.com/GaragePixel/","garagepixel@outlook.com"
+	"support":"https://github.com/GaragePixel/","garagepixel@outlook.com"
 	"depends":["monkey"]
 }
