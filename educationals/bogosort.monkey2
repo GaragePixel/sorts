@@ -12,9 +12,7 @@ A highly inefficient sorting algorithm based on randomly permuting the array
 until it happens to be sorted (O(n×n!) complexity in worst case)
 #end
 Function BogoSort<T>(data:T[])
-	
 
-	
 	While Not IsSorted(data)
 		Shuffle(data)
 	Wend
