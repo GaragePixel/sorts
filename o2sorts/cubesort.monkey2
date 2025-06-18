@@ -3,16 +3,16 @@ Namespace sorts
 
 '---------------------------------------------------------- CubeSort
 
+#rem monkeydoc CubeSort
+@implementation: iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor Steven Swerling, 2006
+
+Parallel sorting algorithm with average case O(n log n)
+This is a simplified sequential implementation
+#end
 Function CubeSort<T>(data:T[])
-	
-	' CubeSort
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: Steven Swerling, 2006
-	'
-	' Parallel sorting algorithm with average case O(n log n)
-	' This is a simplified sequential implementation
-	
+
 	Local n:=data.Length
 	Local blockSize:Int = 8  ' This should be tuned for performance
 	Local done:Bool = False
