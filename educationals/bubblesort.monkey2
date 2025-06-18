@@ -2,6 +2,7 @@
 Namespace sorts
 
 '---------------------------------------------------------- BubbleSort
+
 #rem monkeydoc BubbleSort
 @implementation iDkP for GaragePixel
 @since 2011-xx-xx (Aida 2)
