@@ -2,17 +2,16 @@
 Namespace sorts
 
 '---------------------------------------------------------- BlockSort
+#rem monkeydoc BlockSort
+@implementation iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor Based on Bubble Sort, modern variant
 
+An improved variant of bubble sort that divides data into blocks
+Better performance than bubble sort with similar simplicity
+#end
 Function BlockSort<T>(data:T[])
 
-	' BlockSort
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: Based on Bubble Sort, modern variant
-	'
-	' An improved variant of bubble sort that divides data into blocks
-	' Better performance than bubble sort with similar simplicity
-	
 	Local n:=data.Length
 	Local blockSize:Int = Int(Sqrt(n))  ' Block size around sqrt(n) works well
 	Local blockCount:Int = (n + blockSize - 1) / blockSize  ' Ceiling division
