@@ -2,16 +2,15 @@
 Namespace sorts
 
 '---------------------------------------------------------- HeapSort
+#rem monkeydoc HeapSort
+@Implementation: iDkP for GaragePixel
+@since 2011-xx-xx (Aida 2)
+@Inventor J. W. J. Williams, 1964
 
+In-place comparison-based sorting algorithm
+O(n log n) time complexity with O(1) space
+#end
 Function HeapSort<T>(data:T[])
-	
-	' HeapSort
-	' Implementation: iDkP for GaragePixel
-	' 2011-xx-xx (Aida 2)
-	' Inventor: J. W. J. Williams, 1964
-	'
-	' In-place comparison-based sorting algorithm
-	' O(n log n) time complexity with O(1) space
 
 	Local n:=data.Length
 	
@@ -31,6 +30,8 @@ Function HeapSort<T>(data:T[])
 		Heapify(data, i, 0)
 	End
 End
+
+Private
 
 Function Heapify<T>(data:T[], n:Int, i:Int)
 	' To heapify a subtree rooted at node i
