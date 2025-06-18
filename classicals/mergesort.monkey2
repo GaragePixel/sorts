@@ -2,16 +2,17 @@
 Namespace sorts
 
 '---------------------------------------------------------- MergeSort
+#rem monkeydoc MergeSort
+@implementation iDkP for GaragePixeli
+@since 2025-03-14 (Aida 4)
+@inventor John von Neumann, 1945
 
+Divide and conquer algorithm with O(n log n) time complexity
+Stable sorting algorithm that works well for linked lists
+#end
 Function MergeSort<T>(data:T[])
 	
-	' MergeSort
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: John von Neumann, 1945
-	'
-	' Divide and conquer algorithm with O(n log n) time complexity
-	' Stable sorting algorithm that works well for linked lists
+
 	
 	If data.Length <= 1 Then Return
 	
@@ -68,4 +69,3 @@ Function Merge<T>(data:T[], temp:T[], left:Int, mid:Int, right:Int)
 		k += 1
 	Wend
 End
-
