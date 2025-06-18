@@ -1,47 +1,40 @@
 
 Namespace sorts
 
-'---------------------------------------------------------- CubeSort
+'---------------------------------------------------------- ShellSort
 
-#rem monkeydoc CubeSort
-@implementation: iDkP for GaragePixel
+#rem monkeydoc ShellSort
+@implementation iDkP for GaragePixel
 @since 2025-03-14 (Aida 4)
-@inventor Steven Swerling, 2006
+@inventor Donald Shell, 1959
 
-Parallel sorting algorithm with average case O(n log n)
-This is a simplified sequential implementation
+Efficient extension of insertion sort that allows exchange of distant elements
+Worst-case complexity depends on gap sequence, ranges from O(n²) to O(n log² n)
 #end
-Function CubeSort<T>(data:T[])
-
-	Local n:=data.Length
-	Local blockSize:Int = 8  ' This should be tuned for performance
-	Local done:Bool = False
+Function ShellSort<T>(data:T[])
 	
-	While Not done
-		done = True
-		
-		' Process blocks
-		For Local i:Int = 0 Until n Step blockSize
-			Local atEnd:Int = Min(i + blockSize - 1, n - 1)
+	Local n:=data.Length
+	
+	' Start with a big gap, then reduce the gap
+	Local gap:Int = n/2
+	
+	While gap > 0
+		' Do a gapped insertion sort
+		For Local i:Int = gap Until n
+			Local temp:T = data[i]
+			Local j:Int
 			
-			' Sort each block
-			InsertionSortRange(data, i, atEnd)
-		End
-		
-		' Merge adjacent blocks
-		For Local i:Int = 0 Until n - 1
-			If i Mod blockSize = blockSize - 1
-				Continue
-			End
+			' Shift elements until the correct location for data[i] is found
+			For j = i Until gap Step -gap
+				If data[j-gap] <= temp Exit
+				data[j] = data[j-gap]
+			Next
 			
-			If i < n - 1 And data[i] > data[i + 1]
-				Local temp:T = data[i]
-				data[i] = data[i + 1]
-				data[i + 1] = temp
-				done = False
-			End
-		End
+			' Put temp in its correct location
+			data[j] = temp
+		Next
 		
-		blockSize *= 2
+		' Reduce the gap for the next pass
+		gap = gap/2
 	Wend
 End
