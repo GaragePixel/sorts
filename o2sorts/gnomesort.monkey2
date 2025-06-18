@@ -1,23 +1,23 @@
 
-Namespace sorts
+Namespace stdlib.algorithms.sorts
 
 '---------------------------------------------------------- GnomeSort
 
-Function GnomeSort<T>(data:T[])
-	
-	' GnomeSort
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: Hamid Sarbazi-Azad, 2000
-	'
-	' Also known as "Stupid Sort" - simple but inefficient sorting algorithm
-	' Similar to insertion sort but moves elements with swaps like bubble sort
+#rem monkeydoc GnomeSort
+@implementation iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor Hamid Sarbazi-Azad, 2000
 
-	' Gnome sort (nicknamed stupid sort) is a variation of the insertion sort sorting algorithm 
-	' that does not use nested loops. Gnome sort was originally proposed by Iranian computer scientist 
-	' Hamid Sarbazi-Azad (professor of Computer Science and Engineering at Sharif University of Technology) in 2000. 
-	' The sort was first called stupid sort (not to be confused with bogosort), 
-	' and then later described by Dick Grune and named gnome sort.
+Also known as "Stupid Sort" - simple but inefficient sorting algorithm
+Similar to insertion sort but moves elements with swaps like bubble sort
+
+Gnome sort (nicknamed stupid sort) is a variation of the insertion sort sorting algorithm 
+that does not use nested loops. Gnome sort was originally proposed by Iranian computer scientist 
+Hamid Sarbazi-Azad (professor of Computer Science and Engineering at Sharif University of Technology) in 2000. 
+The sort was first called stupid sort (not to be confused with bogosort), 
+and then later described by Dick Grune and named gnome sort.
+#end
+Function GnomeSort<T>(data:T[])
 	
 	Local pos:Int = 0
 	Local n:=data.Length
