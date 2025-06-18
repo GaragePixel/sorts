@@ -11,17 +11,15 @@ Simple comparison-based sorting algorithm
 O(n²) worst and average case time complexity
 #end
 Function BubbleSort<T>(data:T[])
-	
 
-	
-    Local n:=data.Length
-    For Local i:Int = 0 Until n
-        For Local j:Int = 0 Until n - i - 1
-            If data[j] > data[j + 1]
-                Local temp:= data[j]
-                data[j] = data[j + 1]
-                data[j + 1] = temp
-            End
-        End
-    End
+	Local n:=data.Length
+	For Local i:Int = 0 Until n
+		For Local j:Int = 0 Until n - i - 1
+			If data[j] > data[j + 1]
+				Local temp:= data[j]
+				data[j] = data[j + 1]
+				data[j + 1] = temp
+			End
+		End
+	End
 End
