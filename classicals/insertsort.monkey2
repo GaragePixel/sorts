@@ -33,6 +33,8 @@ Function HeapSort<T>(data:T[])
 	End
 End
 
+private
+
 Function Heapify<T>(data:T[], n:Int, i:Int)
 	' To heapify a subtree rooted at node i
 	Local largest:Int = i     ' Initialize largest as root
