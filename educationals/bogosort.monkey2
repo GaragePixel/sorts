@@ -3,15 +3,17 @@ Namespace sorts
 
 '---------------------------------------------------------- BogoSort
 
+#rem monkeydoc BogoSort (Permutation Sort)
+@implementation iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor Unknown, popularized in 1993
+
+A highly inefficient sorting algorithm based on randomly permuting the array
+until it happens to be sorted (O(n×n!) complexity in worst case)
+#end
 Function BogoSort<T>(data:T[])
 	
-	' BogoSort (Permutation Sort)
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: Unknown, popularized in 1993
-	'
-	' A highly inefficient sorting algorithm based on randomly permuting the array
-	' until it happens to be sorted (O(n×n!) complexity in worst case)
+
 	
 	While Not IsSorted(data)
 		Shuffle(data)
