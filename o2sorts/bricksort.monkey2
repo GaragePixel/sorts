@@ -1,40 +1,42 @@
 
 Namespace sorts
 
-'---------------------------------------------------------- ShellSort
+'---------------------------------------------------------- BrickSort
 
-#rem monkeydoc ShellSort
+#rem monkeydoc Odd-Even Sort (Brick Sort)
 @implementation iDkP for GaragePixel
 @since 2025-03-14 (Aida 4)
-@inventor Donald Shell, 1959
+@inventor K. E. Batcher, 1968
 
-Efficient extension of insertion sort that allows exchange of distant elements
-Worst-case complexity depends on gap sequence, ranges from O(n²) to O(n log² n)
+A variation of bubble sort where we perform alternate passes on odd/even indices
+Stable sorting algorithm with O(n²) worst-case complexity
 #end
-Function ShellSort<T>(data:T[])
+Function OddEvenSort<T>(data:T[])
 	
+	Local sorted:Bool = False
 	Local n:=data.Length
 	
-	' Start with a big gap, then reduce the gap
-	Local gap:Int = n/2
-	
-	While gap > 0
-		' Do a gapped insertion sort
-		For Local i:Int = gap Until n
-			Local temp:T = data[i]
-			Local j:Int
-			
-			' Shift elements until the correct location for data[i] is found
-			For j = i Until gap Step -gap
-				If data[j-gap] <= temp Exit
-				data[j] = data[j-gap]
-			Next
-			
-			' Put temp in its correct location
-			data[j] = temp
-		Next
+	While Not sorted
+		sorted = True
 		
-		' Reduce the gap for the next pass
-		gap = gap/2
+		' Perform bubble sort on even indexed elements
+		For Local i:Int = 0 Until n-1 Step 2
+			If data[i] > data[i+1]
+				Local temp:T = data[i]
+				data[i] = data[i+1]
+				data[i+1] = temp
+				sorted = False
+			End
+		End
+		
+		' Perform bubble sort on odd indexed elements
+		For Local i:Int = 1 Until n-1 Step 2
+			If data[i] > data[i+1]
+				Local temp:T = data[i]
+				data[i] = data[i+1]
+				data[i+1] = temp
+				sorted = False
+			End
+		Next
 	Wend
 End
