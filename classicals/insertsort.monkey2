@@ -11,8 +11,6 @@ In-place comparison-based sorting algorithm
 O(n log n) time complexity with O(1) space
 #end
 Function HeapSort<T>(data:T[])
-	
-
 
 	Local n:=data.Length
 	
@@ -33,7 +31,7 @@ Function HeapSort<T>(data:T[])
 	End
 End
 
-private
+Private
 
 Function Heapify<T>(data:T[], n:Int, i:Int)
 	' To heapify a subtree rooted at node i
