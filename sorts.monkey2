@@ -75,6 +75,10 @@ Namespace sorts
 '   IntroSort<Int>(data)
 '   ' data is now [1, 2, 5, 5, 6, 9]
 
+#Import "<stdlib>"
+Using stdlib.collections
+Using stdlib.syntax
+
 #Import "advanced/introsort"			'Best general-purpose algorithm
 #Import "advanced/mergesortinplace"		'In-place stable sort, minimal memory overhead, advanced use
 #Import "advanced/shellsort"			'Good compromise between simplicity and performance
