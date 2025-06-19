@@ -1,4 +1,3 @@
-
 Namespace sorts
 
 '==============================================================
@@ -77,29 +76,27 @@ Namespace sorts
 '   ' data is now [1, 2, 5, 5, 6, 9]
 
 #Import "advanced/introsort"			'Best general-purpose algorithm
-#Import "advanced/mergesortinplace"
+#Import "advanced/mergesortinplace"		'In-place stable sort, minimal memory overhead, advanced use
 #Import "advanced/shellsort"			'Good compromise between simplicity and performance
+#Import "advanced/timsort"				'Modern adaptive sort, stable and fast for real-world data
 
 #Import "classicals/heapsort"			'Memory-constrained environments
 #Import "classicals/insertsort"			'Very small arrays or nearly sorted data
 #Import "classicals/mergesort"			'Stable sorting with guaranteed performance
 #Import "classicals/quicksort" 			'Good average case but worst-case concerns, Stack and List both use a in-place quicksort algorithm for sorting
 
-#Import "educationals/bogosort"
+#Import "educationals/bogosort"			'Pedagogical, illustrates brute-force/randomness, never practical
 #Import "educationals/bubblesort"		'Here for historical reason, easy to understand
+#Import "educationals/stoogesort"		'Pedagogical, intentionally inefficient, recursion showcase
 
 #Import "specials/tournamentsort"		'For sorting queries in, for example, multiplayer server's stacks
-#Import "specials/blocksort"
+#Import "specials/blocksort"'			'Hybrid/novel sort, block-based strategies for cache efficiency
 
-#Import "o2sorts/bricksort"
-#Import "o2sorts/cubesort"
-#Import "o2sorts/gnomesort"				'A joke
+#Import "o2sorts/bricksort"				'Odd-even sort, parallel-friendly O(n²) algorithm
+#Import "o2sorts/cubesort"				'Demonstration of higher-dimensional sorting, rarely practical
+#Import "o2sorts/combsort"				'Improved bubble, gap-based, O(n²) but practical
+#Import "o2sorts/cocktailshakersort"	'Bidirectional bubble sort, improved on basic bubble
+#Import "o2sorts/gnomesort"				'A joke, simple concept, rarely practical
 
 Function Main()
-End
-
-'coming soon:
-'timsort
-'stoogesort
-'combsort
-'cocktailshakersort
+End 
