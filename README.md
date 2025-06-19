@@ -18,12 +18,16 @@ This library provides a comprehensive collection of sorting algorithms for educa
 
 **advanced**:
 - Modern/adaptive/optimized sorts, often hybrid or state-of-the-art, not classic textbook sorts.
+- 
 **classicals**:
 - Historically important, fundamental algorithms (e.g., bubble, selection, insertion, merge, quick).
+- 
 **educationals**:
 - Algorithms mainly used to demonstrate sorting concepts, recursion, or to show inefficiency/complexity. Not practical for real use.
+- 
 **o2sorts**:
 - Quadratic (O(n²)) sorts not in the classic category, or with a unique twist/optimization.
+- 
 **specials**:
 - Unusual, rare, or novelty sorts; may include non-comparison sorts or those with odd properties.
 
