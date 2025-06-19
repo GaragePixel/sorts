@@ -1,10 +1,6 @@
 
 Namespace sorts
 
-#Import "<stdlib>"
-Using stdlib.collections
-Using stdlib.syntax
-
 '---------------------------------------------------------- TimSort
 
 #rem monkeydoc TimSort
