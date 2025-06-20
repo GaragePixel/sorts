@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.specials
 
 '---------------------------------------------------------- TournamentSort
 
@@ -37,16 +37,19 @@ Technical Advantages & Detailed Explanations
         due to better cache locality, smaller memory footprint, and simpler implementation.
         Specialized tool: Its niche is merging, not generic sorting—most programmers will never use it
         unless working on database internals, external sorting tools, or legacy tape/disc-based algorithms.
-	
 #end
-Function TournamentSort<T>(data:T[])
+Function TournamentSort<T>:T[](data:T[])
+	Return TournamentSort(Varptr(data[0]),False)[0]
+End 
+
+Function TournamentSort<T>:T Ptr(data:T Ptr, onPlace:Bool=True)
 	
-	Local n:=data.Length
+	Local n:=data[0].Length
 	Local result:T[] = New T[n]
 	
 	' Create the sentinel (OPTIMIZE!)
 	Local sentinel:T
-	For Local n:=0 Until data.Length-1
+	For Local n:=0 Until data[0].Length-1
 		If data[n]>sentinel sentinel=data[0]
 	End
 	
@@ -103,7 +106,12 @@ Function TournamentSort<T>(data:T[])
 	Next
 	
 	' Copy sorted result back to original array
-	For Local i:Int = 0 Until n
-		data[i] = result[i]
-	Next
+	If onPlace
+		For Local i:Int = 0 Until n
+			data[i] = result[i]
+		End
+		Return data
+	End
+	
+	Return Varptr(result[0])
 End
