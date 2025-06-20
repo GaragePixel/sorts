@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.specials
 
 '---------------------------------------------------------- BlockSort
 #rem monkeydoc BlockSort
@@ -10,7 +10,7 @@ Namespace sorts
 An improved variant of bubble sort that divides data into blocks
 Better performance than bubble sort with similar simplicity
 #end
-Function BlockSort<T>(data:T[])
+Function BlockSort<T>:T[](data:T[])
 
 	Local n:=data.Length
 	Local blockSize:Int = Int(Sqrt(n))  ' Block size around sqrt(n) works well
@@ -23,7 +23,7 @@ Function BlockSort<T>(data:T[])
 			' Sort each block using insertion sort
 			Local start:Int = i * blockSize
 			Local atEnd:Int = Min(start + blockSize - 1, n - 1)
-			InsertionSortRange(data, start, atEnd)
+			InsertSort(Varptr(data[0]), Varptr(start), Varptr(atEnd))
 			
 			' Check if we need another pass
 			If i < blockCount - 1
@@ -39,17 +39,6 @@ Function BlockSort<T>(data:T[])
 		
 		If Not swapped Exit
 	Wend
-End
-
-Function InsertionSortRange<T>(data:T[], begin:Int, atEnd:Int)
-	For Local i:Int = begin+1 To atEnd
-		Local key:T = data[i]
-		Local j:Int = i - 1
-		
-		While j >= begin And data[j] > key
-			data[j + 1] = data[j]
-			j -= 1
-		Wend
-		data[j + 1] = key
-	End
+	
+	Return data
 End
