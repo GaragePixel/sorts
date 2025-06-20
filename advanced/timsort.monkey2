@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.adv
 
 '---------------------------------------------------------- TimSort
 
@@ -184,11 +184,16 @@ Technical Limits
     Memory: Needs extra buffer for merges
     GPU: Branching and irregular memory access make it a poor fit for compute shaders
 #end
-Function TimSort<T>(data:T[])
-	Local n:=data.Length
-	Local minrun:Int = _GetMinrun_(n)
+Function TimSort<T>:T[]( data:T[] )
+	Return TimSort(Varptr(data[0]))[0]
+End 
+
+Function TimSort<T>:T Ptr( data:T Ptr )
+	Local n:=data[0].Length
+	Local minrun:Int = _GetMinrun(n)
 	If minrun >= n
-		InsertionSort(data, 0, n-1)
+		Local ns1:=n-1
+		InsertionSort(data, MakeInt(), Varptr(ns1))
 		Return
 	End
 
@@ -225,11 +230,12 @@ Function TimSort<T>(data:T[])
 			run[k] = data[start + k]
 		End
 		If Not ascending
-			Reverse(run)
+			Reverse(Varptr(run))
 		End
 
 		' Sort short runs with insertion sort (TimSort requirement)
-		InsertionSort(run, 0, runLen-1)
+		Local runLens1:=runLen-1
+		InsertionSort(Varptr(run), MakeInt(), Varptr(runLens1))
 
 		runs.Push(run)
 		i = j
@@ -239,7 +245,7 @@ Function TimSort<T>(data:T[])
 	While runs.Length > 1
 		Local run2:T[] = runs.Pop()
 		Local run1:T[] = runs.Pop()
-		Local merged:T[] = stdlib.syntax.Merge(run1, run2)
+		Local merged:T[] = Merge(Varptr(run1), Varptr(run2))[0]
 		runs.Push(merged)
 	Wend
 
@@ -250,15 +256,18 @@ Function TimSort<T>(data:T[])
 			data[m] = result[m]
 		End
 	End
+	Return data
 End
 
-#rem monkeydoc hidden Calculates the minimum run length for TimSort.
+Private
+
+#rem monkeydoc private Calculates the minimum run length for TimSort.
 Determines the smallest run size to use, based on array length.
-Ensures balanced merges and optimal performance for TimSort_g.
+Ensures balanced merges and optimal performance for TimSort.
 @param n Array length.
 @return The computed minimum run length.
 #end
-Function _GetMinrun_:Int(n:Int)
+Function _GetMinrun:Int( n:Int )
 	Local r:Int = 0
 	While n >= 64
 		r = r | (n & 1)
