@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.worst
 
 '---------------------------------------------------------- CubeSort
 
@@ -11,7 +11,7 @@ Namespace sorts
 Parallel sorting algorithm with average case O(n log n)
 This is a simplified sequential implementation
 #end
-Function CubeSort<T>(data:T[])
+Function CubeSort<T>:T[](data:T[])
 
 	Local n:=data.Length
 	Local blockSize:Int = 8  ' This should be tuned for performance
@@ -25,7 +25,7 @@ Function CubeSort<T>(data:T[])
 			Local atEnd:Int = Min(i + blockSize - 1, n - 1)
 			
 			' Sort each block
-			InsertionSortRange(data, i, atEnd)
+			InsertSort(Varptr(data[0]), Varptr(i), Varptr(atEnd))
 		End
 		
 		' Merge adjacent blocks
@@ -44,4 +44,6 @@ Function CubeSort<T>(data:T[])
 		
 		blockSize *= 2
 	Wend
+	
+	Return data
 End
