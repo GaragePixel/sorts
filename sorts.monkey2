@@ -78,29 +78,39 @@ Namespace sorts
 #Import "<stdlib>"
 Using stdlib.collections
 Using stdlib.syntax
+Using stdlib.syntax.makevars
 
+'---------- ADVANCED SORTS ----------
 #Import "advanced/introsort"			'Best general-purpose algorithm
-#Import "advanced/mergesortinplace"		'In-place stable sort, minimal memory overhead, advanced use
 #Import "advanced/shellsort"			'Good compromise between simplicity and performance
 #Import "advanced/timsort"				'Modern adaptive sort, stable and fast for real-world data
+#Import "advanced/alphasort"			'Based on BurstSort, String-oriented, locale-aware, optimized for textual data
+#Import "advanced/radixsort"			'In-place, non-stable, fixed-width numeric strings, zero heap
 
+'---------- CLASSICAL SORTS ----------
 #Import "classicals/heapsort"			'Memory-constrained environments
+#Import "classicals/mergesort"			'Stable sorting with guaranteed performance, In-place stable sort, minimal memory overhead, advanced use
 #Import "classicals/insertsort"			'Very small arrays or nearly sorted data
-#Import "classicals/mergesort"			'Stable sorting with guaranteed performance
 #Import "classicals/quicksort" 			'Good average case but worst-case concerns, Stack and List both use a in-place quicksort algorithm for sorting
 
+'---------- EDUCATIONAL SORTS ----------
 #Import "educationals/bogosort"			'Pedagogical, illustrates brute-force/randomness, never practical
 #Import "educationals/bubblesort"		'Here for historical reason, easy to understand
 #Import "educationals/stoogesort"		'Pedagogical, intentionally inefficient, recursion showcase
 
+'---------- SPECIAL SORTS ----------
 #Import "specials/tournamentsort"		'For sorting queries in, for example, multiplayer server's stacks
 #Import "specials/blocksort"'			'Hybrid/novel sort, block-based strategies for cache efficiency
+#Import "specials/countingsort"			'Non-comparison, linear time for integers, stable
 
+'---------- O2SORTS (GaragePixel Originals) ----------
 #Import "o2sorts/bricksort"				'Odd-even sort, parallel-friendly O(n²) algorithm
 #Import "o2sorts/cubesort"				'Demonstration of higher-dimensional sorting, rarely practical
 #Import "o2sorts/combsort"				'Improved bubble, gap-based, O(n²) but practical
 #Import "o2sorts/cocktailshakersort"	'Bidirectional bubble sort, improved on basic bubble
 #Import "o2sorts/gnomesort"				'A joke, simple concept, rarely practical
+
+#Import "mapext"
 
 Function Main()
 End 
