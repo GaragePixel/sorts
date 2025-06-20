@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.adv
 
 '---------------------------------------------------------- Introsort
 
@@ -11,78 +11,90 @@ Namespace sorts
 Hybrid sorting algorithm that uses QuickSort, HeapSort and InsertionSort
 Combines best features of these algorithms - O(n log n) in all cases
 #end
-Function IntroSort<T>(data:T[])
+Function IntroSort<T>:T Ptr( data:T Ptr )
+	Return IntroSort(Varptr(data[0]))[0]
+End
+
+Function IntroSort<T>:T Ptr( data:T Ptr )
 	
-	Local n:=data.Length
+	Local n:=data[0].Length
 	
 	' Calculate max depth for switching to heapsort
 	Local maxDepth:Int = (Int(Log(n) * 2))
 	
-	IntroSortUtil(data, 0, n - 1, maxDepth)
+	Local ns1:=n-1
+	IntroSortUtil(data, MakeInt(), Varptr(ns1), Varptr(maxDepth))
+	Return data
 End
 
-Function IntroSortUtil<T>(data:T[], begin:Int, atEnd:Int, depthLimit:Int)
-	Local size:Int = atEnd - begin + 1
+Private
+
+Function IntroSortUtil<T>( data:T Ptr, begin:Int Ptr, atEnd:Int Ptr, depthLimit:Int Ptr )
+	Local size:Int = atEnd[0] - begin[0] + 1
 	
 	' Use insertion sort for small arrays
 	If size < 16
-		InsertionSortRange(data, begin, atEnd)
+		InsertSort(data, begin, atEnd)
 		Return
 	End
 	
 	' If depth limit is zero, use heapsort
 	If depthLimit = 0
-		BuildHeap(data, begin, atEnd)
+		BuildHeap(data[0], begin[0], atEnd[0])
 		For Local i:Int = atEnd Until begin + 1 Step -1
 			' Swap first and current
-			Local temp:T = data[begin]
+			Local temp:T = data[begin[0]]
 			data[begin] = data[i]
 			data[i] = temp
 			
 			' Heapify reduced heap
-			Heapify(data, begin, i-1, begin)
+			Local is1:=i-1
+			Heapify(data, begin, Varptr(is1), begin)
 		End
 		Return
 	End
 	
 	' Otherwise, use quicksort
 	Local pivot:Int = Partition(data, begin, atEnd)
-	IntroSortUtil(data, begin, pivot - 1, depthLimit - 1)
-	IntroSortUtil(data, pivot + 1, atEnd, depthLimit - 1)
+	Local pivs1:=pivot-1
+	Local piva1:=pivot+1
+	Local depthLimits1:=depthLimit-1
+	IntroSortUtil(data, begin, Varptr(pivs1), Varptr(depthLimits1))
+	IntroSortUtil(data, Varptr(piva), atEnd, Varptr(depthLimits1))
 End
 
-Function BuildHeap<T>(data:T[], begin:Int, atEnd:Int)
-	Local size:Int = atEnd - begin + 1
-	For Local i:Int = begin + size/2 - 1 until begin Step - 1
-		Heapify(data, begin, atEnd, i)
+Function BuildHeap<T>(data:T Ptr, begin:Int Ptr, atEnd:Int Ptr)
+	Local size:Int = atEnd[0] - begin[0] + 1
+	For Local i:Int = begin[0] + size/2 - 1 until begin[0] Step - 1
+		Heapify(data, begin, atEnd, Varptr(i))
 	End
 End
 
-Function Heapify<T>(data:T[], begin:Int, atEnd:Int, i:Int)
-	Local largest:Int = i
-	Local left:Int = 2*(i-begin) + 1 + begin
-	Local right:Int = 2*(i-begin) + 2 + begin
+Function Heapify<T>(data:T Ptr, begin:Int Ptr, atEnd:Int Ptr, i:Int Ptr)
+	Local largest:Int = i[0]
+	Local left:Int = 2*(i-begin[0]) + 1 + begin[0]
+	Local right:Int = 2*(i-begin[0]) + 2 + begin[0]
 	
-	If left <= atEnd And data[left] > data[largest]
+	If left <= atEnd[0] And data[left] > data[largest]
 		largest = left
 	End
 	
-	If right <= atEnd And data[right] > data[largest]
+	If right <= atEnd[0] And data[right] > data[largest]
 		largest = right
 	End
 	
-	If largest <> i
+	If largest <> i[0]
 		Local temp:T = data[i]
 		data[i] = data[largest]
 		data[largest] = temp
 		
-		Heapify(data, begin, atEnd, largest)
+		Heapify(data, begin, atEnd, Varptr(largest))
 	End
 End
 
-Function Partition<T>:Int(data:T[], begin:Int, atEnd:Int)
+Function Partition<T>:Int(data:T Ptr, begin:Int Ptr, atEnd:Int Ptr)
 	' Use median-of-three as pivot
-	Local mid:Int = begin + (atEnd - begin) / 2
+	Local mid:Int = begin[0] + (atEnd[0] - begin[0]) / 2
 	
 	' Sort begin, mid, end
 	If data[begin] > data[mid]
@@ -111,8 +123,8 @@ Function Partition<T>:Int(data:T[], begin:Int, atEnd:Int)
 	data[mid] = data[atEnd-1]
 	data[atEnd-1] = temp
 	
-	Local i:Int = begin
-	Local j:Int = atEnd - 1
+	Local i:Int = begin[0]
+	Local j:Int = atEnd[0] - 1
 	
 	' Standard partition algorithm
 	While True
@@ -137,13 +149,16 @@ Function Partition<T>:Int(data:T[], begin:Int, atEnd:Int)
 	
 	' Put pivot back in right place
 	temp = data[i]
-	data[i] = data[atEnd-1]
-	data[atEnd-1] = temp
+	data[i] = data[atEnd[0]-1]
+	data[atEnd[0]-1] = temp
 	
 	Return i
 End
 
 '---------------------------------------------------------- Parallel Introsort
+
+Public
+
 #rem 
 Class ParallelIntroSort<T>
 	
