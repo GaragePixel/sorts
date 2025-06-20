@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.worst
 
 '---------------------------------------------------------- CombSort
 
@@ -12,7 +12,7 @@ Improvement over bubble sort - eliminates turtles by comparing elements at a spe
 Gap shrinks by shrink factor (standard is 1.247). Finishes with bubble sort pass.
 Complexity: O(n²) worst case, but generally faster than bubble sort for random data.
 #end
-Function CombSort<T>(data:T[])
+Function CombSort<T>:T[](data:T[])
 	
 	Local n:=data.Length
 	Local gap:Int = n
@@ -39,4 +39,6 @@ Function CombSort<T>(data:T[])
 			i += 1
 		Wend
 	Wend
+
+	Return data
 End
