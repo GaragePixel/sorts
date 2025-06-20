@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.edu
 
 '---------------------------------------------------------- StoogeSort
 
@@ -17,12 +17,12 @@ thirds and recursively sorts them. Despite its poor time complexity, it serves a
 an interesting example of unconventional divide-and-conquer algorithms.
 The algorithm is primarily of academic interest due to its unique approach.
 #end
-Function StoogeSort<T>(data:T[])
+Function StoogeSort<T>:T[](data:T[])
 	
-	StoogeSortRecursive(data, 0, data.Length - 1)
+	Return StoogeSort(Varptr(data[0]), 0, data.Length - 1)
 End
 
-Function StoogeSortRecursive<T>(data:T[], start:Int, atEnd:Int)
+Function StoogeSort<T>:T[](data:T Ptr, start:Int, atEnd:Int)
 	
 	' Swap first and last elements if they are out of order
 	If data[start] > data[atEnd]
@@ -36,12 +36,14 @@ Function StoogeSortRecursive<T>(data:T[], start:Int, atEnd:Int)
 		Local third:Int = (atEnd - start + 1) / 3
 		
 		' Sort first 2/3 of the array
-		StoogeSortRecursive(data, start, atEnd - third)
+		StoogeSort(data, start, atEnd - third)
 		
 		' Sort last 2/3 of the array
-		StoogeSortRecursive(data, start + third, atEnd)
+		StoogeSort(data, start + third, atEnd)
 		
 		' Sort first 2/3 again to ensure correctness
-		StoogeSortRecursive(data, start, atEnd - third)
+		StoogeSort(data, start, atEnd - third)
 	End
+
+	Return data[0]
 End

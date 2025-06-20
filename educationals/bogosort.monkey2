@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.edu
 
 '---------------------------------------------------------- BogoSort
 
@@ -11,16 +11,19 @@ Namespace sorts
 A highly inefficient sorting algorithm based on randomly permuting the array
 until it happens to be sorted (O(n×n!) complexity in worst case)
 #end
-Function BogoSort<T>(data:T[])
+Function BogoSort<T>:T[](data:T[])
 
-	While Not IsSorted(data)
-		Shuffle(data)
+	While Not _IsSorted(Varptr(data[0]))
+		_Shuffle(Varptr(data[0]))
 	Wend
+	Return data
 End
 
-Function IsSorted<T>:Bool(data:T[])
+Private
+
+Function _IsSorted<T>:Bool(data:T Ptr)
 	' Check if array is sorted
-	For Local i:Int = 0 Until data.Length-1
+	For Local i:Int = 0 Until data[0].Length-1
 		If data[i] > data[i+1]
 			Return False
 		End
@@ -28,7 +31,7 @@ Function IsSorted<T>:Bool(data:T[])
 	Return True
 End
 
-Function Shuffle<T>(this:T[])
+Function _Shuffle<T>(this:T Ptr)
 	' Shuffle array randomly
 	Local n:=this.Length
 	

@@ -1,5 +1,5 @@
 
-Namespace sorts
+Namespace sorts.worst
 
 '---------------------------------------------------------- BrickSort
 
@@ -11,10 +11,18 @@ Namespace sorts
 A variation of bubble sort where we perform alternate passes on odd/even indices
 Stable sorting algorithm with O(n²) worst-case complexity
 #end
-Function OddEvenSort<T>(data:T[])
+Function BrickSort<T>:T[](data:T[])
+	Return OddEvenSort(Varptr(data[0]))[0]
+End
+
+Function OddEvenSort<T>:T[](data:T[])
+	Return OddEvenSort(Varptr(data[0]))[0]
+End
+
+Function OddEvenSort<T>:T Ptr(data:T Ptr)
 	
 	Local sorted:Bool = False
-	Local n:=data.Length
+	Local n:=data[0].Length
 	
 	While Not sorted
 		sorted = True
@@ -39,4 +47,6 @@ Function OddEvenSort<T>(data:T[])
 			End
 		Next
 	Wend
+
+	Return data
 End

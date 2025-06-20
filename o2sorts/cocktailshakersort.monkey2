@@ -1,4 +1,5 @@
-Namespace sorts
+
+Namespace sorts.worst
 
 '---------------------------------------------------------- CocktailShakerSort
 
@@ -11,7 +12,7 @@ A variation of bubble sort that sorts in both directions on each pass.
 Performs forward and backward sweeps to bubble the largest and smallest elements.
 Complexity: O(n²) worst case, stable, simple but rarely used in practice.
 #end
-Function CocktailShakerSort<T>(data:T[])
+Function CocktailShakerSort<T>:T[](data:T[])
 	
 	Local n:=data.Length
 	Local start:Int = 0
@@ -50,4 +51,6 @@ Function CocktailShakerSort<T>(data:T[])
 		' Increase start boundary as smallest element is now in place
 		start += 1
 	Wend
+
+	Return data
 End

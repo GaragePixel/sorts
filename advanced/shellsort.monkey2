@@ -1,19 +1,23 @@
 
-Namespace sorts
+Namespace sorts.adv
 
 '---------------------------------------------------------- ShellSort
 
-Function ShellSort<T>(data:T[])
+#rem monkeydoc ShellSort
+@implementation iDkP for GaragePixel
+@since 2025-03-14 (Aida 4)
+@inventor Donald Shell, 1959
 
-	' ShellSort
-	' Implementation: iDkP for GaragePixel
-	' 2025-03-14 (Aida 4)
-	' Inventor: Donald Shell, 1959
-	'
-	' Efficient extension of insertion sort that allows exchange of distant elements
-	' Worst-case complexity depends on gap sequence, ranges from O(n²) to O(n log² n)
+Efficient extension of insertion sort that allows exchange of distant elements
+Worst-case complexity depends on gap sequence, ranges from O(n²) to O(n log² n)
+#end
+Function ShellSort<T>:T[](data:T[])
+	Return ShellSort(Varptr(data[0]))[0]
+End
+
+Function ShellSort<T>:T Ptr(data:T Ptr)
 	
-	Local n:=data.Length
+	Local n:=data[0].Length
 	
 	' Start with a big gap, then reduce the gap
 	Local gap:Int = n/2
@@ -37,4 +41,5 @@ Function ShellSort<T>(data:T[])
 		' Reduce the gap for the next pass
 		gap = gap/2
 	Wend
+	Return data
 End

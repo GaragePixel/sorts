@@ -11,13 +11,17 @@ Namespace sorts
 In-place comparison-based sorting algorithm
 O(n log n) time complexity with O(1) space
 #end
-Function HeapSort<T>(data:T[])
+Function HeapSort<T>:T[](data:T[])
+	Return HeapSort(Varptr(data[0]))[0]
+End 
 
-	Local n:=data.Length
+Function HeapSort<T>:T Ptr(data:T Ptr)
+
+	Local n:=data[0].Length
 	
 	' Build heap (rearrange array)
 	For Local i:Int = n/2 - 1 Until 0 Step -1
-		Heapify(data, n, i)
+		_Heapify(data, Varptr(n), Varptr(i))
 	End
 	
 	' Extract elements from heap one by one
@@ -28,17 +32,18 @@ Function HeapSort<T>(data:T[])
 		data[i] = temp
 		
 		' Call heapify on reduced heap
-		Heapify(data, i, 0)
+		_Heapify(data, Varptr(i), MakeInt())
 	End
+	Return data
 End
 
 Private
 
-Function Heapify<T>(data:T[], n:Int, i:Int)
+Function _Heapify<T>(data:T Ptr, n:Int Ptr, i:Int Ptr)
 	' To heapify a subtree rooted at node i
-	Local largest:Int = i     ' Initialize largest as root
-	Local left:Int = 2*i + 1  ' Left child
-	Local right:Int = 2*i + 2 ' Right child
+	Local largest:Int = i[0]  		' Initialize largest as root
+	Local left:Int = 2*i[0] + 1 	' Left child
+	Local right:Int = 2*i[0] + 2 	' Right child
 	
 	' If left child is larger than root
 	If left < n And data[left] > data[largest]
@@ -51,12 +56,12 @@ Function Heapify<T>(data:T[], n:Int, i:Int)
 	End
 	
 	' If largest is not root
-	If largest <> i
+	If largest <> i[0]
 		Local temp:T = data[i]
-		data[i] = data[largest]
+		data[i[0]] = data[largest]
 		data[largest] = temp
 		
 		' Recursively heapify the affected subtree
-		Heapify(data, n, largest)
+		_Heapify(data, n, Varptr(largest))
 	End
 End
