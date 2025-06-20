@@ -1,5 +1,5 @@
 
-Namespace stdlib.algorithms.sorts
+Namespace sorts.worst
 
 '---------------------------------------------------------- GnomeSort
 
@@ -17,7 +17,11 @@ Hamid Sarbazi-Azad (professor of Computer Science and Engineering at Sharif Univ
 The sort was first called stupid sort (not to be confused with bogosort), 
 and then later described by Dick Grune and named gnome sort.
 #end
-Function GnomeSort<T>(data:T[])
+Function StupidSort<T>:T[](data:T[])
+	Return GnomeSort(data)
+End 
+
+Function GnomeSort<T>:T[](data:T[])
 	
 	Local pos:Int = 0
 	Local n:=data.Length
@@ -34,4 +38,6 @@ Function GnomeSort<T>(data:T[])
 			pos -= 1
 		End
 	Wend
+	
+	Return data
 End
