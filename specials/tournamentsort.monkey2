@@ -38,80 +38,69 @@ Technical Advantages & Detailed Explanations
         Specialized tool: Its niche is merging, not generic sorting—most programmers will never use it
         unless working on database internals, external sorting tools, or legacy tape/disc-based algorithms.
 #end
-Function TournamentSort<T>:T[](data:T[])
-	Return TournamentSort(Varptr(data[0]),False)[0]
-End 
-
-Function TournamentSort<T>:T Ptr(data:T Ptr, onPlace:Bool=True)
-	
-	Local n:=data[0].Length
+Function TournamentSort<T>:T[](data:T[], inPlace:Bool=True)
+	Local n:Int = data.Length
+	If n=0 Return data
 	Local result:T[] = New T[n]
-	
-	' Create the sentinel (OPTIMIZE!)
-	Local sentinel:T
-	For Local n:=0 Until data[0].Length-1
-		If data[n]>sentinel sentinel=data[0]
+
+	' Sentinel is the maximum value in the array
+	Local sentinel:T = data[0]
+	For Local i:=1 Until n
+		If data[i] > sentinel Then sentinel = data[i]
 	End
-	
-	' Create a tournament tree (array-based)
+
+	' Tournament tree: 1-indexed, size 2n
 	Local treeSize:Int = 2 * n
 	Local tree:T[] = New T[treeSize]
 	Local positions:Int[] = New Int[treeSize]
-	
-	' Fill leaves with data values
-	For Local i:Int = 0 Until n
+
+	' Fill leaves (n to 2n-1) with input data
+	For Local i:=0 Until n
 		tree[n + i] = data[i]
 		positions[n + i] = i
 	End
-	
-	' Build the initial tournament tree
-	For Local i:Int = n-1 Until 1 Step - 1
-		Local leftChild:Int = 2 * i
-		Local rightChild:Int = 2 * i + 1
-		
-		If tree[leftChild] <= tree[rightChild] Or rightChild >= treeSize
-			tree[i] = tree[leftChild]
-			positions[i] = positions[leftChild]
+
+	' Build tree bottom-up
+	For Local i:=n-1 To 1 Step -1
+		Local left:Int = 2 * i
+		Local right:Int = 2 * i + 1
+		If right >= treeSize Or tree[left] <= tree[right]
+			tree[i] = tree[left]
+			positions[i] = positions[left]
 		Else
-			tree[i] = tree[rightChild]
-			positions[i] = positions[rightChild]
+			tree[i] = tree[right]
+			positions[i] = positions[right]
 		End
-	Next
-	
-	' Extract elements one by one
-	For Local i:Int = 0 Until n
-		' Get winner and its position
+	End
+
+	' Extract min elements iteratively
+	For Local i:=0 Until n
 		result[i] = tree[1]
-		Local pos:Int = positions[1]
-		
-		' Replace with a sentinel value (very large)
-		tree[n + pos] = sentinel
-		
-		' Rebuild tournament path
-		Local node:Int = (n + pos) / 2
+		Local extracted:Int = positions[1]
+		tree[n + extracted] = sentinel
+		Local node:Int = (n + extracted) / 2
 		While node >= 1
-			Local leftChild:Int = 2 * node
-			Local rightChild:Int = 2 * node + 1
-			
-			If tree[leftChild] <= tree[rightChild] Or rightChild >= treeSize
-				tree[node] = tree[leftChild]
-				positions[node] = positions[leftChild]
+			Local left:Int = 2 * node
+			Local right:Int = 2 * node + 1
+			If right >= treeSize Or tree[left] <= tree[right]
+				tree[node] = tree[left]
+				positions[node] = positions[left]
 			Else
-				tree[node] = tree[rightChild]
-				positions[node] = positions[rightChild]
+				tree[node] = tree[right]
+				positions[node] = positions[right]
 			End
-			
 			node = node / 2
 		Wend
-	Next
-	
-	' Copy sorted result back to original array
-	If onPlace
-		For Local i:Int = 0 Until n
-			data[i] = result[i]
-		End
-		Return data
 	End
-	
-	Return Varptr(result[0])
+
+'	If inPlace
+'		For Local i:=0 Until n
+'			data[i] = result[i]
+'		End
+'		Return data
+'	End
+
+'	Return result
+
+	Return inPlace ? CopyTo(result,data) Else result
 End
