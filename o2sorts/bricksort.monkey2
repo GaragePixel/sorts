@@ -1,5 +1,5 @@
 
-Namespace sorts.worst
+Namespace sorts.o2
 
 '---------------------------------------------------------- BrickSort
 
@@ -11,42 +11,40 @@ Namespace sorts.worst
 A variation of bubble sort where we perform alternate passes on odd/even indices
 Stable sorting algorithm with O(n²) worst-case complexity
 #end
-Function BrickSort<T>:T[](data:T[])
-	Return OddEvenSort(Varptr(data[0]))[0]
+Function BrickSort<T>:T[](data:T[],onPlace:Bool=True)
+	Return OddEvenSort(data,onPlace)
 End
 
-Function OddEvenSort<T>:T[](data:T[])
-	Return OddEvenSort(Varptr(data[0]))[0]
-End
-
-Function OddEvenSort<T>:T Ptr(data:T Ptr)
+Function OddEvenSort<T>:T[](data:T[],onPlace:Bool=True)
+	
+	Local result:=Cpynd(data, Not onPlace)
 	
 	Local sorted:Bool = False
-	Local n:=data[0].Length
+	Local n:=result.Length
 	
 	While Not sorted
 		sorted = True
 		
 		' Perform bubble sort on even indexed elements
 		For Local i:Int = 0 Until n-1 Step 2
-			If data[i] > data[i+1]
-				Local temp:T = data[i]
-				data[i] = data[i+1]
-				data[i+1] = temp
+			If result[i] > result[i+1]
+				Local temp:T = result[i]
+				result[i] = result[i+1]
+				result[i+1] = temp
 				sorted = False
 			End
 		End
 		
 		' Perform bubble sort on odd indexed elements
 		For Local i:Int = 1 Until n-1 Step 2
-			If data[i] > data[i+1]
-				Local temp:T = data[i]
-				data[i] = data[i+1]
-				data[i+1] = temp
+			If result[i] > result[i+1]
+				Local temp:T = result[i]
+				result[i] = result[i+1]
+				result[i+1] = temp
 				sorted = False
 			End
 		Next
 	Wend
 
-	Return data
+	Return result
 End
