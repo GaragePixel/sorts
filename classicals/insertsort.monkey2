@@ -11,23 +11,21 @@ Namespace sorts
 Builds the sorted array one item at a time
 O(n²) worst and average case time complexity, but efficient for small datasets
 #end
-Function InsertSort<T>:T[](data:T[])
-	Return InsertSort(Varptr(data[0]))[0]
-End
-
-Function InsertSort<T>:T Ptr(data:T Ptr)
+Function InsertSort<T>:T[]( data:T[], onPlace:Bool=True )
 	
-	Local n:=data.Length
+	Local result:=Cpynd(data, Not onPlace)
+	
+	Local n:=result.Length
 	For Local i:Int = 1 Until n
-		Local key:=data[i]
+		Local key:=result[i]
 		Local j:Int = i - 1
-		While j >= 0 And data[j] > key
-			data[j + 1] = data[j]
+		While j >= 0 And result[j] > key
+			result[j + 1] = result[j]
 			j = j - 1
 		Wend
-		data[j + 1] = key
+		result[j + 1] = key
 	End
-	Return data
+	Return result
 End
 
 #rem monkeydoc Performs in-place insertion sort on a subrange of an array.
@@ -61,24 +59,18 @@ Technical advantages & detailed explanations:
 @param start Index of the first element in the range.
 @param atEnd Index of the last element in the range (inclusive).
 #end
-Function InsertSort<T>:T[](data:T[], start:Int, last:Int)
-	Return InsertSort(data,start,last)[0]
-End
-
-Function InsertSort<T>:T Ptr(data:T Ptr, start:Int, last:Int)
-	Return InsertSort(data,Varptr(start),Varptr(last))
-End
-
-Function InsertSort<T>:T Ptr(data:T Ptr, start:Int Ptr, last:Int Ptr)
+Function InsertSort<T>:T[]( data:T[], start:Int Ptr, last:Int Ptr, onPlace:Bool=True )
+	
+	Local result:=Cpynd(data, Not onPlace)
 
 	For Local i:Int = start[0] + 1 To last[0]
-		Local key:T = data[i]
+		Local key:T = result[i]
 		Local j:Int = i - 1
-		While j >= start[0] And data[j] > key
-			data[j + 1] = data[j]
+		While j >= start[0] And result[j] > key
+			result[j + 1] = result[j]
 			j -= 1
 		Wend
-		data[j + 1] = key
+		result[j + 1] = key
 	End
-	Return data
+	Return result
 End
