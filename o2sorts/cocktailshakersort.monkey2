@@ -1,5 +1,5 @@
 
-Namespace sorts.worst
+Namespace sorts.o2
 
 '---------------------------------------------------------- CocktailShakerSort
 
@@ -12,9 +12,11 @@ A variation of bubble sort that sorts in both directions on each pass.
 Performs forward and backward sweeps to bubble the largest and smallest elements.
 Complexity: O(n²) worst case, stable, simple but rarely used in practice.
 #end
-Function CocktailShakerSort<T>:T[](data:T[])
+Function CocktailSort<T>:T[]( data:T[], onPlace:Bool=True )
 	
-	Local n:=data.Length
+	Local result:=Cpynd(data, Not onPlace)
+	
+	Local n:=result.Length
 	Local start:Int = 0
 	Local atEnd:Int = n - 1
 	Local swapped:Bool = True
@@ -24,10 +26,10 @@ Function CocktailShakerSort<T>:T[](data:T[])
 		
 		' Forward pass - bubble largest element to the right
 		For Local i:Int = start Until atEnd
-			If data[i] > data[i + 1]
-				Local temp:T = data[i]
-				data[i] = data[i + 1]
-				data[i + 1] = temp
+			If result[i] > result[i + 1]
+				Local temp:T = result[i]
+				result[i] = result[i + 1]
+				result[i + 1] = temp
 				swapped = True
 			End
 		Next
@@ -40,10 +42,10 @@ Function CocktailShakerSort<T>:T[](data:T[])
 		
 		' Backward pass - bubble smallest element to the left
 		For Local i:Int = atEnd Until start Step -1
-			If data[i] < data[i - 1]
-				Local temp:T = data[i]
-				data[i] = data[i - 1]
-				data[i - 1] = temp
+			If result[i] < result[i - 1]
+				Local temp:T = result[i]
+				result[i] = result[i - 1]
+				result[i - 1] = temp
 				swapped = True
 			End
 		Next
@@ -52,5 +54,5 @@ Function CocktailShakerSort<T>:T[](data:T[])
 		start += 1
 	Wend
 
-	Return data
+	Return result
 End
