@@ -1,6 +1,8 @@
 
 Namespace sorts.edu
 
+Using stdlib.math.random
+
 '---------------------------------------------------------- BogoSort
 
 #rem monkeydoc BogoSort (Permutation Sort)
@@ -11,19 +13,22 @@ Namespace sorts.edu
 A highly inefficient sorting algorithm based on randomly permuting the array
 until it happens to be sorted (O(n×n!) complexity in worst case)
 #end
-Function BogoSort<T>:T[](data:T[])
+Function BogoSort<T>:T[]( data:T[], onPlace:Bool=True )
 
-	While Not _IsSorted(Varptr(data[0]))
-		_Shuffle(Varptr(data[0]))
+	Local result:=Cpynd(data, Not onPlace)
+
+	While Not _IsSorted(result)
+		_Shuffle(result)
 	Wend
-	Return data
+
+	Return result
 End
 
 Private
 
-Function _IsSorted<T>:Bool(data:T Ptr)
+Function _IsSorted<T>:Bool(data:T[])
 	' Check if array is sorted
-	For Local i:Int = 0 Until data[0].Length-1
+	For Local i:Int = 0 Until data.Length-1
 		If data[i] > data[i+1]
 			Return False
 		End
@@ -31,7 +36,7 @@ Function _IsSorted<T>:Bool(data:T Ptr)
 	Return True
 End
 
-Function _Shuffle<T>(this:T Ptr)
+Function _Shuffle<T>(this:T[])
 	' Shuffle array randomly
 	Local n:=this.Length
 	
