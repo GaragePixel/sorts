@@ -39,14 +39,16 @@ Technical Advantages & Detailed Explanations
         unless working on database internals, external sorting tools, or legacy tape/disc-based algorithms.
 #end
 Function TournamentSort<T>:T[](data:T[], inPlace:Bool=True)
+	
 	Local n:Int = data.Length
 	If n=0 Return data
-	Local result:T[] = New T[n]
+	
+	Local result:=Cpynd(data, Not inPlace)
 
 	' Sentinel is the maximum value in the array
-	Local sentinel:T = data[0]
+	Local sentinel:T = result[0]
 	For Local i:=1 Until n
-		If data[i] > sentinel Then sentinel = data[i]
+		If result[i] > sentinel Then sentinel = result[i]
 	End
 
 	' Tournament tree: 1-indexed, size 2n
@@ -56,7 +58,7 @@ Function TournamentSort<T>:T[](data:T[], inPlace:Bool=True)
 
 	' Fill leaves (n to 2n-1) with input data
 	For Local i:=0 Until n
-		tree[n + i] = data[i]
+		tree[n + i] = result[i]
 		positions[n + i] = i
 	End
 
@@ -102,5 +104,5 @@ Function TournamentSort<T>:T[](data:T[], inPlace:Bool=True)
 
 '	Return result
 
-	Return inPlace ? CopyTo(result,data) Else result
+	Return result' inPlace ? CopyTo(result,data) Else result
 End
