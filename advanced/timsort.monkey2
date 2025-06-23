@@ -1,6 +1,8 @@
 
 Namespace sorts.adv
 
+Using stdlib.syntax
+
 '---------------------------------------------------------- TimSort
 
 #rem monkeydoc TimSort
@@ -184,17 +186,17 @@ Technical Limits
     Memory: Needs extra buffer for merges
     GPU: Branching and irregular memory access make it a poor fit for compute shaders
 #end
-Function TimSort<T>:T[]( data:T[] )
-	Return TimSort(Varptr(data[0]))[0]
-End 
 
-Function TimSort<T>:T Ptr( data:T Ptr )
-	Local n:=data[0].Length
+Function TimSort<T>:T[]( data:T[], onPlace:Bool=True )
+	
+	Local result:=Cpynd(data, Not onPlace)
+	
+	Local n:=result.Length
 	Local minrun:Int = _GetMinrun(n)
 	If minrun >= n
 		Local ns1:=n-1
-		InsertionSort(data, MakeInt(), Varptr(ns1))
-		Return
+		Local _int:=0
+		Return InsertSort(result, Varptr(_int), Varptr(ns1))
 	End
 
 	' Use Stack<T[]> to store runs for indexable, type-safe management
@@ -205,14 +207,14 @@ Function TimSort<T>:T Ptr( data:T Ptr )
 	While i < n
 		Local start := i
 		Local ascending:Bool = True
-		If i+1 < n And data[i] > data[i+1] ascending = False
+		If i+1 < n And data[i] > result[i+1] ascending = False
 		Local j:Int = i+1
 		If ascending
-			While j < n And data[j-1] <= data[j]
+			While j < n And result[j-1] <= result[j]
 				j += 1
 			Wend
 		Else
-			While j < n And data[j-1] > data[j]
+			While j < n And result[j-1] > result[j]
 				j += 1
 			Wend
 		End
@@ -227,15 +229,16 @@ Function TimSort<T>:T Ptr( data:T Ptr )
 		' Copy the run and reverse if descending
 		Local run:T[] = New T[runLen]
 		For Local k:Int = 0 Until runLen
-			run[k] = data[start + k]
+			run[k] = result[start + k]
 		End
 		If Not ascending
-			Reverse(Varptr(run))
+			Flip(run)
 		End
 
 		' Sort short runs with insertion sort (TimSort requirement)
 		Local runLens1:=runLen-1
-		InsertionSort(Varptr(run), MakeInt(), Varptr(runLens1))
+		Local _int:=0
+		InsertSort(run, Varptr(_int), Varptr(runLens1))
 
 		runs.Push(run)
 		i = j
@@ -245,18 +248,18 @@ Function TimSort<T>:T Ptr( data:T Ptr )
 	While runs.Length > 1
 		Local run2:T[] = runs.Pop()
 		Local run1:T[] = runs.Pop()
-		Local merged:T[] = Merge(Varptr(run1), Varptr(run2))[0]
+		Local merged:T[] = Merge(run1, run2)
 		runs.Push(merged)
 	Wend
 
 	' Copy back to data[]
 	If runs.Length > 0
-		Local result:T[] = runs.Pop()
+		Local preResult:T[] = runs.Pop()
 		For Local m:Int = 0 Until n
-			data[m] = result[m]
+			result[m] = preResult[m]
 		End
 	End
-	Return data
+	Return result
 End
 
 Private
