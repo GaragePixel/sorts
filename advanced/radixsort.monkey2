@@ -11,7 +11,7 @@ Tech: MSD radix, binary quicksort variant, in-place, zero heap allocation
 For: Fixed-width numeric strings (e.g. "0034", "1201").  
 Stable: False. Space: O(1).
 #End
-Function RadixSort( arr:String Ptr, pos:Int=0, left:Int=0, right:Int=-1 )
+Function RadixSort( arr:String Ptr, pos:Int=0, left:Int=0, right:Int=-1, onPlace:Bool=True )
 
 	' Note: Placed in advanced sorts because:
 	'
@@ -61,7 +61,7 @@ Tech: MSD radix sort (stable) + CountingSort for digit binning, switches to Inse
 For: Fixed-width numeric strings, leading zeros.  
 Stable: True. Space: O(n+d). Fast for large arrays, hybrid for small bins.
 #End
-Function HybridRadixSort( arr:String Ptr, pos:Int=0, left:Int=0, right:Int=-1, binLimit:Int=32 )
+Function HybridRadixSort( arr:String Ptr, pos:Int=0, left:Int=0, right:Int=-1, binLimit:Int=32, onPlace:Bool=True )
 
 	' Note: HybridRadixSort belongs to the category of non-comparison-based sorts 
 	' (also called distribution sorts), specifically in the radix sort family.
@@ -89,7 +89,7 @@ Function HybridRadixSort( arr:String Ptr, pos:Int=0, left:Int=0, right:Int=-1, b
 
 	Local n:=right-left+1
 	If n<=binLimit
-		InsertSort(Varptr(arr[0]), left, right)
+		'InsertSort(arr, left, right, onPlace)
 		Return
 	End
 
