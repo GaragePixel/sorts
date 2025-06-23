@@ -10,9 +10,11 @@ Namespace sorts.specials
 An improved variant of bubble sort that divides data into blocks
 Better performance than bubble sort with similar simplicity
 #end
-Function BlockSort<T>:T[]( data:T[] )
+Function BlockSort<T>:T[]( data:T[], inPlace:Bool=True )
 	Local n:=data.Length
 	If n<2 Return Null
+	
+	Local result:=Cpynd(data, Not inPlace)
 
 	Local blocksize:=Int(Sqrt(n))
 	If blocksize<1 blocksize=1
@@ -26,21 +28,21 @@ Function BlockSort<T>:T[]( data:T[] )
 			Local finish:=Min(start+blocksize-1, n-1)
 			' Insertion sort within block
 			For Local j:=start+1 To finish
-				Local key:=data[j]
+				Local key:=result[j]
 				Local k:=j-1
-				While k>=start And data[k]>key
-					data[k+1]=data[k]
+				While k>=start And result[k]>key
+					result[k+1]=result[k]
 					k-=1
 				Wend
-				data[k+1]=key
+				result[k+1]=key
 			End
 			' Swap block boundaries if needed
 			If i<blocks-1
 				Local nextblock:=Min((i+1)*blocksize, n-1)
-				If data[finish]>data[nextblock]
-					Local tmp:=data[finish]
-					data[finish]=data[nextblock]
-					data[nextblock]=tmp
+				If result[finish]>result[nextblock]
+					Local tmp:=result[finish]
+					result[finish]=result[nextblock]
+					result[nextblock]=tmp
 					swapped=True
 				End
 			End
@@ -49,5 +51,5 @@ Function BlockSort<T>:T[]( data:T[] )
 		If Not swapped Exit
 	Wend
 	
-	Return data
+	Return result
 End
