@@ -1,6 +1,8 @@
 
 Namespace sorts
 
+Using stdlib.types
+
 '---------------------------------------------------------- InPlaceMergeSort
 
 #rem monkeydoc In-Place or Recurcive Merge Sort
@@ -17,35 +19,39 @@ Recurcive version:
 Merge sort implementation that doesn't require extra array allocation
 O(n log n) time complexity, but with O(1) extra space
 #end
-Function MergeSort<T>:T[]( data:T[] )	
+
+Function MergeSort<T>:T[]( data:T[], onPlace:Bool=True )
+
+	Local datalens1:=data.Length - 1
+	Local _int:Int=0
+	Return MergeSortRecursive(data, Varptr(_int), Varptr(datalens1), onPlace)
+End
+
+Function MergeSortRecursive<T>:T[]( data:T[], start:Int Ptr, atEnd:Int Ptr, onPlace:Bool=True )
 	
-	Local datalens1:=data[0].Length - 1
-	Return MergeSortRecursive(Varptr(data[0]), MakeInt(), Varptr(dataLens1))[0]
-End
-
-Function MergeSort<T>:T Ptr( data:T Ptr )
-
-	Local datalens1:=data[0].Length - 1
-	Return MergeSortRecursive(data, MakeInt(), Varptr(dataLens1))
-End
-
-Function MergeSortRecursive<T>:T Ptr( data:T Ptr, start:Int Ptr, atEnd:Int Ptr )
+	Local result:=Cpynd(data, Not onPlace)
+	
 	If start[0] < atEnd[0]
 		Local mid:Int = (start[0] + atEnd[0]) / 2
 		
 		' Sort first and second halves
 		Local mida1:=mid+1
-		MergeSortRecursive(data, start, Varptr(mid))
-		MergeSortRecursive(data, varptr(mida1), Varptr(atEnd))
+		MergeSortRecursive(result, start, Varptr(mid))
+		MergeSortRecursive(result, Varptr(mida1), atEnd)
 		
 		' Merge the sorted halves
-		MergeSort(data, start, mid, atEnd)
+		MergeSort(result, start, Varptr(mid), atEnd)
 	End
+
+	Return result
 End
 
-Function MergeSort<T>( data:T Ptr, start:Int Ptr, mid:Int Ptr, atEnd:Int Ptr )
+Function MergeSort<T>:T[]( data:T[], start:Int Ptr, mid:Int Ptr, atEnd:Int Ptr, onPlace:Bool=True )
+	
+	Local result:=Cpynd(data, Not onPlace)
+	
 	' If arrays are already sorted
-	If data[mid] <= data[mid[0] + 1] Return
+	If result[mid[0]] <= result[mid[0] + 1] Return Null
 	
 	Local i:Int = start[0]
 	Local j:Int = mid[0] + 1
@@ -53,19 +59,19 @@ Function MergeSort<T>( data:T Ptr, start:Int Ptr, mid:Int Ptr, atEnd:Int Ptr )
 	' Until we reach end of either array
 	While i <= mid[0] And j <= atEnd[0]
 		' If element of first array is in right position
-		If data[i] <= data[j]
+		If result[i] <= result[j]
 			i += 1
 		Else
-			Local value:T = data[j]
+			Local value:T = result[j]
 			Local index:Int = j
 			
 			' Shift all elements between i and j right by 1
 			While index <> i
-				data[index] = data[index - 1]
+				result[index] = result[index - 1]
 				index -= 1
 			Wend
 			
-			data[i] = value
+			result[i] = value
 			
 			' Increment all indexes
 			i += 1
@@ -73,4 +79,6 @@ Function MergeSort<T>( data:T Ptr, start:Int Ptr, mid:Int Ptr, atEnd:Int Ptr )
 			j += 1
 		End
 	Wend
+	
+	Return result
 End
