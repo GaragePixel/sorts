@@ -4,7 +4,7 @@
 **Date:** 2011 – 2025-03-15  
 **Aida Version:** 4
 
-A comprehensive collection of sorting algorithms implemented with generic support for any comparable data type.
+A collection of sorting algorithms implemented with generic support for any comparable data type.
 
 ---
 
