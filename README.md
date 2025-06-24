@@ -14,55 +14,6 @@ This library provides a comprehensive collection of sorting algorithms for educa
 
 ---
 
-## Notes: Category Definitions and Implementation Choices
-
-- **advanced**:  
-	Modern/adaptive/optimized sorts, often hybrid or state-of-the-art, not classic textbook sorts.
-- **classicals**:  
-	Historically important, fundamental algorithms (e.g., bubble, selection, insertion, merge, quick).
-- **educationals**:  
-	Algorithms mainly used to demonstrate sorting concepts, recursion, or to show inefficiency/complexity. Not practical for real use.
-- **o2sorts**:  
-	Quadratic (O(n²)) sorts not in the classic category, or with a unique twist/optimization.
-- **specials**:  
-	Unusual, rare, or novelty sorts; may include non-comparison sorts or those with odd properties.
-
----
-
-## List of Functionality
-
-- **Classical algorithms:** QuickSort, MergeSort, HeapSort, InsertionSort
-- **Advanced algorithms:** IntroSort, ShellSort, MergeSortInPlace (InPlaceMergeSort)
-- **Unusual algorithms:** BogoSort, GnomeSort, OddEvenSort, CubeSort, TournamentSort, BubbleSort (classical never used one)
-- Full generic support through `<T>` type parameter
-- In-place and auxiliary memory implementations
-- Various time complexity profiles from O(n log n) to O(n²) to O(n×n!)
-- Performance characteristics comments for algorithm selection
-
----
-
-## Notes
-
-The implementations prioritize clarity and correctness over micro-optimization to facilitate learning and understanding. While the code is suitable for production use, time-critical applications should consider the complexity annotations to choose appropriate algorithms for their specific needs.
-
-For very large datasets, algorithms like QuickSort, MergeSort, HeapSort, and especially IntroSort offer the best general-case performance. For small datasets or nearly-sorted data, InsertionSort often performs better despite its O(n²) theoretical complexity.
-
----
-
-## Technical Advantages
-
-- Generic implementation working with any comparable type
-- Clear annotations of time/space complexity
-- Historical context for each algorithm
-- Consistent interface across all implementations
-- Modular design allowing easy integration into larger systems
-- Mix of recursive and iterative approaches
-- Educational value with implementation details exposed
-
-For practical applications, **IntroSort** is recommended as it combines the best features of QuickSort, HeapSort, and InsertionSort to deliver reliable O(n log n) performance in all cases. The parallel version further leverages multi-core systems for large datasets.
-
----
-
 ## Completeness
 
 ### 1. Advanced
@@ -135,6 +86,53 @@ note: QuickSort is adapted for list partitioning, but generally not recommended.
 - **String:** Available for string.
 
 ---
+
+## Notes: Category Definitions and Implementation Choices
+
+- **advanced**:  
+	Modern/adaptive/optimized sorts, often hybrid or state-of-the-art, not classic textbook sorts.
+- **classicals**:  
+	Historically important, fundamental algorithms (e.g., bubble, selection, insertion, merge, quick).
+- **educationals**:  
+	Algorithms mainly used to demonstrate sorting concepts, recursion, or to show inefficiency/complexity. Not practical for real use.
+- **o2sorts**:  
+	Quadratic (O(n²)) sorts not in the classic category, or with a unique twist/optimization.
+- **specials**:  
+	Unusual, rare, or novelty sorts; may include non-comparison sorts or those with odd properties.
+
+---
+
+## List of Functionality
+
+- **Classical algorithms:** QuickSort, MergeSort, HeapSort, InsertionSort
+- **Advanced algorithms:** IntroSort, ShellSort, MergeSortInPlace (InPlaceMergeSort)
+- **Unusual algorithms:** BogoSort, GnomeSort, OddEvenSort, CubeSort, TournamentSort, BubbleSort (classical never used one)
+- Full generic support through `<T>` type parameter
+- In-place and auxiliary memory implementations
+- Various time complexity profiles from O(n log n) to O(n²) to O(n×n!)
+- Performance characteristics comments for algorithm selection
+
+---
+
+## Notes
+
+The implementations prioritize clarity and correctness over micro-optimization to facilitate learning and understanding. While the code is suitable for production use, time-critical applications should consider the complexity annotations to choose appropriate algorithms for their specific needs.
+
+For very large datasets, algorithms like QuickSort, MergeSort, HeapSort, and especially IntroSort offer the best general-case performance. For small datasets or nearly-sorted data, InsertionSort often performs better despite its O(n²) theoretical complexity.
+
+---
+
+## Technical Advantages
+
+- Generic implementation working with any comparable type
+- Clear annotations of time/space complexity
+- Historical context for each algorithm
+- Consistent interface across all implementations
+- Modular design allowing easy integration into larger systems
+- Mix of recursive and iterative approaches
+- Educational value with implementation details exposed
+
+For practical applications, **IntroSort** is recommended as it combines the best features of QuickSort, HeapSort, and InsertionSort to deliver reliable O(n log n) performance in all cases. The parallel version further leverages multi-core systems for large datasets.
 
 ## When to Use Which Algorithm
 
