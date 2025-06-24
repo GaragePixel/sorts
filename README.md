@@ -81,6 +81,7 @@ For practical applications, **IntroSort** is recommended as it combines the best
 | [InsertSort](https://github.com/GaragePixel/sorts/blob/main/classicals/insertsort.monkey2)     |   ✗     |      ✔         |    ✗     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
 | [MergeSort](https://github.com/GaragePixel/sorts/blob/main/classicals/mergesort.monkey2)       |   ✗     |      ✔         |    ✗     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
 | [QuickSort](https://github.com/GaragePixel/sorts/blob/main/classicals/quicksort.monkey2)       |   ✔     |      ✔         |    ✔     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
+
 note: QuickSort is adapted for list partitioning, but generally not recommended.
 
 ### 3. Educationals
