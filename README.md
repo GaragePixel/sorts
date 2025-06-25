@@ -23,18 +23,18 @@ This library provides a comprehensive collection of sorting algorithms for educa
 
 | *Stable* | *<=>* | Sort | Compare | Range | Asc/Desc | Filter | inPlace | Completed | Array | Stack | List | Map | String |
 |----|:-:|:-:|:------:|:------------:|:--------:|:------:|:-------:|:--:|:-:|:-:|:-:|:-:|:-:|
-?|⭐| [IntroSort](https://github.com/GaragePixel/sorts/blob/main/advanced/introsort.monkey2)        |   ✗     |      ✔         |    ✗     |   ✔    |✔    |   ❌|✅  |❌  |❎  |❎|❎|
-?|⭐| [ShellSort](https://github.com/GaragePixel/sorts/blob/main/advanced/shellsort.monkey2)        |   ✗     |      ✗         |    ✗     |   ✔    |✔    |   ❌|✅  |❌  |❎  |❎|❎|
-?|⭐| [TimSort](https://github.com/GaragePixel/sorts/blob/main/advanced/timsort.monkey2)            |   ✗     |      ✗         |    ✗     |   ✔    |✔    |   ❌|✅  |❌  |❌  |❎|❎|
+✗|⭐| [IntroSort](https://github.com/GaragePixel/sorts/blob/main/advanced/introsort.monkey2)        |   ✗     |      ✔         |    ✗     |   ✔    |✔    |   ❌|✅  |❌|❎|❎|❎|
+✗|⭐|[ShellSort](https://github.com/GaragePixel/sorts/blob/main/advanced/shellsort.monkey2)        |   ✗     |      ✗         |    ✗     |   ✔    |✔    |   ❌|✅  |❌|❎  |❎|❎|
+⭐|⭐| [TimSort](https://github.com/GaragePixel/sorts/blob/main/advanced/timsort.monkey2)            |   ✗     |      ✗         |    ✗     |   ✔    |✔    |   ❌|✅|❌|❌|❎|❎|
 
 ### 2. Classicals
 
 | *Stable* | *<=>* | Sort | Compare | Range | Asc/Desc | Filter | inPlace | Completed | Array | Stack | List | Map | String |
 |------|:-:|:-:|:-----:|:------------:|:--------:|:------:|:----|:--:|:-:|:-:|:-:|:-:|:-:|
-|•|⭐| [HeapSort](https://github.com/GaragePixel/sorts/blob/main/classicals/heapsort.monkey2)         |   ✗     |      ✗         |    ✗     |   ✔         |✔    |❌|✅  |❌  |❎  |❎|❎|
+|✗|⭐| [HeapSort](https://github.com/GaragePixel/sorts/blob/main/classicals/heapsort.monkey2)         |   ✗     |      ✗         |    ✗     |   ✔         |✔    |❌|✅  |❌  |❎  |❎|❎|
 ⭐|⭐| [InsertSort](https://github.com/GaragePixel/sorts/blob/main/classicals/insertsort.monkey2)     |   ✗     |      ✔         |    ✗     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
 ⭐|⭐| [MergeSort](https://github.com/GaragePixel/sorts/blob/main/classicals/mergesort.monkey2)       |   ✗     |      ✔         |    ✗     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
-|•|⭐| [QuickSort](https://github.com/GaragePixel/sorts/blob/main/classicals/quicksort.monkey2)       |   ✔     |      ✔         |    ✔     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
+|✗|⭐| [QuickSort](https://github.com/GaragePixel/sorts/blob/main/classicals/quicksort.monkey2)       |   ✔     |      ✔         |    ✔     |   ✔         |✔    |❌|✅  |❌  |❌  |❎|❎|
 
 note: QuickSort is adapted for list partitioning, but generally not recommended.
 
@@ -43,24 +43,24 @@ note: QuickSort is adapted for list partitioning, but generally not recommended.
 | *Stable* | *<=>* | Sort | Compare | Range | Asc/Desc | Filter | inPlace | Completed | Array | Stack | List | Map | String |
 |------|:-:|:-:|:-----:|:------------:|:--------:|:------:|:-----:|:--:|:-|:-:|:--:|:-|:-:|
 ⭐|⭐| [BubbleSort](https://github.com/GaragePixel/sorts/blob/main/educationals/bubblesort.monkey2)       |   ✗     |      ✗         |    ✗     |   ✔    |✔    |   ❌|✅  |❌  |❌  |❎|❎|
-?|⭐| [StoogeSort](https://github.com/GaragePixel/sorts/blob/main/educationals/stoogesort.monkey2)       |   ✗     |      ✔         |    ✗     |   ✔    |✔    |   ❌|✅  |❌  |❎  |❎|❎|
+✗|⭐| [StoogeSort](https://github.com/GaragePixel/sorts/blob/main/educationals/stoogesort.monkey2)       |   ✗     |      ✔         |    ✗     |   ✔    |✔    |   ❌|✅  |❌  |❎  |❎|❎|
 
 ### 4. o2
 
 | *Stable* | *<=>* | Sort | Compare | Range | Asc/Desc | Filter | inPlace | Completed | Array | Stack | List | Map | String |
 |------|:-:|:-:|:-----:|:------------:|:--------:|:------:|:-----:|:--:|:--:|:--:|:--:|:-:|:-:|
-?|⭐|[BrickSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/bricksort.monkey2)      |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
-?|⭐|[CocktailSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/cocktailshakersort.monkey2)   |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
-?|⭐|[CombSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/combsort.monkey2)       |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
-?|⭐|[CubeSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/cubesort.monkey2)       |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
-?|⭐|[GnomeSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/gnomesort.monkey2)      |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
+✗|⭐|[BrickSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/bricksort.monkey2)      |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
+⭐|⭐|[CocktailSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/cocktailshakersort.monkey2)   |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
+✗|⭐|[CombSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/combsort.monkey2)       |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
+✗|⭐|[CubeSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/cubesort.monkey2)       |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
+⭐|⭐|[GnomeSort](https://github.com/GaragePixel/sorts/blob/main/o2sorts/gnomesort.monkey2)      |❎|❎|❎|❎|✔|✅|✅|❎|❎|❎|❎|
 
 ### 5. Specials
 
 | *Stable* | *<=>* | Sort | Compare | Range | Asc/Desc | Filter | inPlace | Completed | Array | Stack | List | Map | String |
 |------|:-:|:-:|:-----:|:------------:|:--------:|:------:|:-----:|:--:|:-:|:-:|:-:|:-:|:-:|
-?|⭐| [BlockSort](https://github.com/GaragePixel/sorts/blob/main/specials/blocksort.monkey2)        |   ✗     |      ✗         |    ✗     |   ✔    |   ✔     |❌| ✅  |❌|❌  |❎|❎|
-?|⭐| [TournamentSort](https://github.com/GaragePixel/sorts/blob/main/specials/tournamentsort.monkey2)   |   ✗     |      ✗         |    ✗     |   ✔    |   ✔     |❌| ✅  |❌|❎|❎|❎|
+✗|⭐| [BlockSort](https://github.com/GaragePixel/sorts/blob/main/specials/blocksort.monkey2)        |   ✗     |      ✗         |    ✗     |   ✔    |   ✔     |❌| ✅  |❌|❌  |❎|❎|
+✗|⭐| [TournamentSort](https://github.com/GaragePixel/sorts/blob/main/specials/tournamentsort.monkey2)   |   ✗     |      ✗         |    ✗     |   ✔    |   ✔     |❌| ✅  |❌|❎|❎|❎|
 
 ---
 
@@ -68,10 +68,10 @@ note: QuickSort is adapted for list partitioning, but generally not recommended.
 
 | *Stable* | *<=>* | Sort | Compare | Range | Asc/Desc | Filter | inPlace | Completed | Array | Stack | List | Map | String |
 |------|:-:|:-:|:-----:|:------------:|:--------:|:------:|:---:|:--:|:-:|:-:|:-:|:-:|:-:|
-★|•| [RadixSort](https://github.com/GaragePixel/sorts/blob/main/advanced/radixsort.monkey2)      |   ✗     |      ✔         |    ✔     |   ✗ | ✔   |❌| ❌  |❌  |❎|❎|❎|
-•|•| [BogoSort](https://github.com/GaragePixel/sorts/blob/main/educationals/bogosort.monkey2)       |   ✗     |      ✗         |    ✗     |   ✗ | ✔   |❌| ❌  |❌  |❎|❎|❎|
-•|•| [AlphaSort](https://github.com/GaragePixel/sorts/blob/main/advanced/alphasort.monkey2)      |   ✗     |      ✔         |    ✗     |   ✗ | ✗   |❌| ❌  |❌  |❎|❎|❎|
-⭐|•| [CountingSort](https://github.com/GaragePixel/sorts/blob/main/specials/blocksort.monkey2)        |   ✗     |      ✗         |    ✗     |   ✗    |   ✗     |❌| ✅|❎|❎|❎|❎|
+★|✗| [RadixSort](https://github.com/GaragePixel/sorts/blob/main/advanced/radixsort.monkey2)      |   ✗     |      ✔         |    ✔     |   ✗ | ✔   |❌| ❌  |❌  |❎|❎|❎|
+✗|⭐| [BogoSort](https://github.com/GaragePixel/sorts/blob/main/educationals/bogosort.monkey2)       |   ✗     |      ✗         |    ✗     |   ✗ | ✔   |❌| ❌  |❌  |❎|❎|❎|
+✗|✗| [AlphaSort](https://github.com/GaragePixel/sorts/blob/main/advanced/alphasort.monkey2)      |   ✗     |      ✔         |    ✗     |   ✗ | ✗   |❌| ❌  |❌  |❎|❎|❎|
+⭐|✗| [CountingSort](https://github.com/GaragePixel/sorts/blob/main/specials/blocksort.monkey2)        |   ✗     |      ✗         |    ✗     |   ✗    |   ✗     |❌| ✅|❎|❎|❎|❎|
 
 ---
 
