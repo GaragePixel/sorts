@@ -3,7 +3,10 @@
 **Implementation:** iDkP from GaragePixel  
 **Date:** 2011 – 2025-03-15  
 **Aida Version:** 4
-![Splash](https://github.com/GaragePixel/sorts/blob/main/082.jpg)
+<div align="center">
+<img src="https://github.com/GaragePixel/sorts/blob/main/082.jpg?raw=true" width="300" align=centerx>
+</div>
+
 A collection of sorting algorithms implemented with generic support for any comparable data type.
 
 ---
