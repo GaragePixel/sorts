@@ -1,3 +1,6 @@
+
+Namespace stdlib.algorithms.sorts
+
 #rem monkeydoc
 @author iDkP from GaragePixel
 @since 2025-07-12
