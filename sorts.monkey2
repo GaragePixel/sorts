@@ -112,5 +112,7 @@ Using stdlib.syntax.makevars
 
 #Import "mapext"
 
+#Import "compares"						'Collection of comparisons functions
+
 Function Main()
 End 
