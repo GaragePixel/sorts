@@ -3,7 +3,7 @@ Namespace sorts
 '==============================================================
 ' Sorting Algorithms Library
 ' Implementation: iDkP from GaragePixel
-' 2011 - 2025-03-15 (Aida 4)
+' 2011 - 2025-07-23 (Aida 4)
 ' Wrote for Mx2 compatible W.
 '
 ' A comprehensive collection of sorting algorithms implemented
